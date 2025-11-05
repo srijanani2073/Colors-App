@@ -15,6 +15,16 @@ const LearnColors = () => {
 
   const handleItemClick = (item) => {
     setSelectedItem(item);
+
+    // 🎤 Speak out loud
+    const msg = new SpeechSynthesisUtterance(`${item.name} is ${item.colorName}`);
+    msg.lang = 'en-US';
+    msg.rate = 0.9;
+    msg.pitch = 1.2;
+    window.speechSynthesis.cancel(); // stop any ongoing speech
+    window.speechSynthesis.speak(msg);
+
+    // Optional: small highlight animation
     setTimeout(() => setSelectedItem(null), 2000);
   };
 
@@ -36,11 +46,6 @@ const LearnColors = () => {
           </button>
         ))}
       </div>
-      {selectedItem && (
-        <div className="color-announcement">
-          <p>{selectedItem.name} is <strong>{selectedItem.colorName}</strong>!</p>
-        </div>
-      )}
     </div>
   );
 };
