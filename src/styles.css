@@ -701,5 +701,6 @@ body, html, #root {
     padding: 1.5rem 2rem;
     font-size: 1.2rem;
     max-width: 90%;
+    color: #333;
   }
 }
